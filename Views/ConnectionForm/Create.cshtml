@@ -1,0 +1,162 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model SNGPL.ViewModels.ConnectionFormVM
+
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "New Connection Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container pt-2" style="border-top: 2px solid #f84141;">
+    <div class="col-lg-12 col-md-12 col-sm-12 border shadow-sm">
+        <h2 class="text-center text-info">Application For New Gas Connection</h2>
+        <form method="post" asp-action="Create" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="ConnectionForm.ConnectionTypeId"></label>
+                        <select asp-for="ConnectionForm.ConnectionTypeId" asp-items="@Model.connetionTypes" class="form-control">
+                            <option selected disabled value="">Select Connection Type</option>
+                        </select>
+                        <span asp-validation-for="ConnectionForm.ConnectionTypeId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="ConnectionForm.Customer_Name"></label>
+                        <input asp-for="ConnectionForm.Customer_Name" class="form-control" />
+
+                        <span asp-validation-for="ConnectionForm.Customer_Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="ConnectionForm.FamilyName"></label>
+                        <input asp-for="ConnectionForm.FamilyName" class="form-control" />
+
+                        <span asp-validation-for="ConnectionForm.FamilyName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="ConnectionForm.TownAddress"></label>
+                        <input asp-for="ConnectionForm.TownAddress" class="form-control" />
+                        <span asp-validation-for="ConnectionForm.TownAddress" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="ConnectionForm.City"></label>
+                        <input asp-for="ConnectionForm.City" class="form-control" />
+                        <span asp-validation-for="ConnectionForm.City" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="ConnectionForm.NearestPlace"></label>
+                        <input asp-for="ConnectionForm.NearestPlace" class="form-control" />
+                        <span asp-validation-for="ConnectionForm.NearestPlace" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="ConnectionForm.TelePhone"></label>
+                        <input asp-for="ConnectionForm.TelePhone" class="form-control" />
+                        <span asp-validation-for="ConnectionForm.TelePhone" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="ConnectionForm.CellNumber"></label>
+                        <input asp-for="ConnectionForm.CellNumber" class="form-control" placeholder="+923012345678" />
+                        <span asp-validation-for="ConnectionForm.CellNumber" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="ConnectionForm.EmailAddress"></label>
+                        <input asp-for="ConnectionForm.EmailAddress" class="form-control" placeholder="e.g (abc@gmail.com)" />
+                        <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        <span asp-validation-for="ConnectionForm.EmailAddress" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="ConnectionForm.CNIC"></label>
+                        <input asp-for="ConnectionForm.CNIC" class="form-control" placeholder="12345-0123456-7" />
+                        <span asp-validation-for="ConnectionForm.CNIC" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="ConnectionForm.RequiredFor"></label>
+                        <select asp-for="ConnectionForm.RequiredFor" class="form-control">
+                            <option selected disabled value="">Connection Required For</option>
+                            <option value="Kitchen">Kitchen</option>
+                            <option value="Water Heating">Water Heating</option>
+                            <option value="Space Heating">Space Heating</option>
+                            <option value="All of three">All of three</option>
+                        </select>
+                        <span asp-validation-for="ConnectionForm.RequiredFor" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="ConnectionForm.NearestConsumerNo"></label>
+                        <input asp-for="ConnectionForm.NearestConsumerNo" class="form-control" />
+                        <span asp-validation-for="ConnectionForm.NearestConsumerNo" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="form-group">
+                        <label asp-for="ConnectionForm.OwnerName"></label>
+                        <input asp-for="ConnectionForm.OwnerName" class="form-control" />
+                        <span asp-validation-for="ConnectionForm.OwnerName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="ConnectionForm.OwnerCNIC"></label>
+                        <input asp-for="ConnectionForm.OwnerCNIC" class="form-control" />
+                        <span asp-validation-for="ConnectionForm.OwnerCNIC" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="text-info">Attachments</h4>
+                    <div class="form-group">
+                        <label asp-for="ConnectionForm.NearestGasBillFile"></label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input asp-for="ConnectionForm.NearestGasBillFile" accept="image/*" class="custom-file-input" id="customFile">
+                                <label class="custom-file-label" for="customFile">Choose file</label>
+                            </div>
+                        </div>
+                        <span asp-validation-for="ConnectionForm.NearestGasBillFile" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ConnectionForm.ElectricityBillFile"></label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input asp-for="ConnectionForm.ElectricityBillFile" accept="image/*" class="custom-file-input" id="customFile">
+                                <label class="custom-file-label" for="customFile">Choose file</label>
+                            </div>
+                        </div>
+                        <span asp-validation-for="ConnectionForm.ElectricityBillFile" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <input type="submit" value="Submit Application" class="btn btn-primary mr-auto" />
+        </form>
+        <br />
+    </div>
+</div>
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

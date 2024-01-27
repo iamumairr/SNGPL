@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Track Application";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container pt-2">
+    <div class="row">
+        <div class="col-md-12">
+            <form method="post" asp-action="TrackApplication" asp-controller="Home">
+                <div class="row d-flex justify-content-center align-items-center">
+                    <div class="col-md-6 border p-2 shadow">
+                        <div class="form-group">
+                            <h2 class="text-info text-center">Application Tracking</h2>
+                            <input name="token" type="number" class="form-control" required placeholder="Enter 6 digit Application Number" />
+                            <br />
+                            <input type="submit" value="Track/Trace" class="btn btn-primary float-right" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

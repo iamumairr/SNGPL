@@ -1,0 +1,36 @@
+﻿@model SNGPL.Models.ConnectionForm
+@{
+    ViewData["Title"] = "ApplicationStatus";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container pt-2">
+    <div class="col-md-12 border p-2">
+        <h2 class="text-info text-center">Your Application Status</h2>
+        <div class="card card-purple shadow-lg">
+            <div class="card-body" style="font-size:15px">
+                <table class="table table-bordered table-striped table-hover w-100">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>CNIC</th>
+                            <th>Cell Number</th>
+                            <th>Email Address</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td>@Model.Customer_Name</td>
+                            <td>@Model.CNIC</td>
+                            <td>@Model.CellNumber</td>
+                            <td>@Model.EmailAddress</td>
+                            <td>@Model.Status</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

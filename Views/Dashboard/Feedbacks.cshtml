@@ -1,0 +1,55 @@
+﻿@model IEnumerable<SNGPL.Models.Feedback>
+@{
+    ViewBag.Icon = "fas fa-comment-dots";
+    ViewData["Title"] = "Feedbacks";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    @if (Model.Count() > 0)
+    {
+        <div class="card card-primary shadow-lg">
+            <div class="card-body" style="font-size:15px">
+                <table id="DT_load" class="table table-bordered table-striped table-hover w-100 table-sm table-responsive-sm">
+                    <thead>
+                        <tr>
+                            <th>Full Name</th>
+                            <th>Email</th>
+                            <th>Rating</th>
+                            <th>Environment</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td width="15%">@item.FullName</td>
+                                <td width="20%">@item.Email</td>
+                                <td width="15%">@item.Rating</td>
+                                <td width="15%">@item.Environment</td>
+                                <td width="30%">@item.Description</td>
+
+                                <td width="5%">
+                                    <a asp-action="DeleteFeedback" asp-controller="Dashboard" asp-route-id="@item.Id" class="btn btn-outline-danger btn-sm text-danger mx-1" style="cursor:pointer">
+                                        <i class="far fa-trash-alt"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Oops!</strong> No Feedbacks were found.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+</div>
